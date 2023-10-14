@@ -1,0 +1,14 @@
+.metaphoto--stage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 60px;
+    padding: 4rem;
+}
+
+.photo--layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
