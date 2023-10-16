@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import SearchChip from "./SearchChip";
 import '@/styles/Search.css'
 
 export default function Search(props: { resultsCallback: CallableFunction}) {
@@ -33,28 +34,12 @@ export default function Search(props: { resultsCallback: CallableFunction}) {
     }, [titleSearch, albumSearch, emailSearch])
 
     return (
-        <div class="search">
-            <label for="title">Photo Title</label>
-            <input
-                id="title" 
-                type="text"
-                value={titleSearch}
-                onChange={e => setTitleSearch(e.target.value)}
-            />
-            <label for="album">Album Title</label>
-            <input
-                id="album" 
-                type="text"
-                value={albumSearch}
-                onChange={e => setAlbumSearch(e.target.value)}
-            />
-            <label for="email">User Email</label>
-            <input
-                id="email" 
-                type="email"
-                value={emailSearch}
-                onChange={e => setEmailSearch(e.target.value)}
-            />
+        <div className="search">
+            <div className="search--chips">
+                <SearchChip id="title-photo" label="Photo Title" onValid={setTitleSearch} />
+                <SearchChip id="title-album" label="Album Title" onValid={setAlbumSearch} />
+                <SearchChip id="email-user" label="User Email" onValid={setEmailSearch} validation={isValidEmail} />
+            </div> 
         </div>
     )
 }

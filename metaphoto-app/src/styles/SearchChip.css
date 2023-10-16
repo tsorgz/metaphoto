@@ -1,0 +1,46 @@
+.search--chip {
+    display: flex;
+    padding: 8px;
+    border-radius: 999px;
+    background-color: gray;
+    border: 1px solid lightgray;
+    margin:4px 8px 4px 0;
+    max-width: 100%;
+}
+
+.valid {
+    background-color: lightgreen;
+    color: black;
+    border-color: green;
+}
+
+.invalid {
+    background-color: lightcoral;
+    color: black;
+    border-color: red;
+}
+
+.search--chip label {
+    margin: auto 8px auto 0;
+}
+
+.search--chip-input {
+    display: block;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    min-width: 16px;
+    margin-right: 8px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.search--chip-delete {
+    margin: auto 0;
+    cursor: pointer;
+}
+
+.search--chip-input:empty:before {
+    content: 'No Filter';
+    color: lightgray;
+}

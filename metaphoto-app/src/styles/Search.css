@@ -1,5 +1,18 @@
 .search {
+    width: 100%;
+    background-color: #333333;
+}
+
+#searchbar {
+    background-color: #333333;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.search--chips {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    font-size: .8rem;
+    justify-content: center;
 }

@@ -1,0 +1,15 @@
+.photo--grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.photo--grid-item {
+    flex: 0 0 33.33%;
+    height: auto;
+}
+
+.photo--grid-thumbnail {
+    width: 100%;
+    height: auto;
+}

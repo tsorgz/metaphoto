@@ -4,9 +4,6 @@ import Metaphoto from '@/components/Metaphoto'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <h1>Metaphoto</h1>
-      <Metaphoto />
-    </main>
+    <Metaphoto />
   )
 }

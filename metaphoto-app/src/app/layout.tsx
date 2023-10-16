@@ -16,7 +16,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="main">
+          <a href="/">
+            <h1>Metaphoto</h1>
+          </a>
+          <div className="metaphoto--stage">
+            {children}
+          </div>
+        </main>
+      </body>
     </html>
   )
 }
+

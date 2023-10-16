@@ -1,0 +1,23 @@
+.photo--stage {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    max-width: 800px;
+}
+
+.photo--title {
+    font-size: 2rem;
+}
+
+.photo--author {
+    font-size: 2rem;
+}
+
+.photo--album {
+    font-size: 1rem;
+    padding: 5px 0;
+    color: lightgrey;
+}

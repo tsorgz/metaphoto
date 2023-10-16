@@ -1,0 +1,51 @@
+.photo--stage {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #333333;
+    padding-bottom: 20px;
+}
+
+.photo--user {
+    padding: 10px;
+    display: flex;
+}
+
+.photo--thumbnail {
+    height: 4rem;
+    width: auto;
+    border-radius: 100%;
+}
+
+.photo--userdata {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.photo--metadata {
+    display: flex;
+    gap: 5px;
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+.photo--username {
+    font-weight: bold;
+}
+
+.photo--author {
+    font-size: 1.5rem;
+}
+
+.photo--album {
+    font-size: .8rem;
+    color: lightgrey;
+}
+
+.photo--photo {
+    width: 100%;
+    height: auto;
+}
