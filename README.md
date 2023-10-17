@@ -78,3 +78,4 @@ The frontend communicates with the backend via API calls. The full stack can be 
 * Swagger documentation for backend service
 * Some interactivity and animations for UX
 * Incremental Static Regeneration would help improve SSR pages if the data actually changed
+* Get rid of Vercel branding on favicon
