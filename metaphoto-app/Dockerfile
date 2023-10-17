@@ -10,6 +10,16 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ARG PROTOCOL="http"
+ARG DOMAIN="localhost:3003"
+ARG API_VERSION="externalapi"
+
+ENV NEXT_PUBLIC_API_PROTOCOL=${PROTOCOL}
+ENV NEXT_PUBLIC_API_DOMAIN=${DOMAIN}
+ENV NEXT_PUBLIC_API_VERSION=${API_VERSION}
+
+CMD ["echo", "${PROTOCOL} -- ${DOMAIN} -- ${API_VERSION}"]
+
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN npm run build
