@@ -1,50 +1,28 @@
 'use client'
-import { useEffect, useState, useRef, useCallback } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { setupObserver } from '@/utils/setupObserver'
 import '@/styles/PhotoGrid.css'
+import { buildUrl } from '@/utils/buildUrl'
 
 export default function PhotoGrid(props: {url: string, urlParams: URLSearchParams}) {
 
     const { url, urlParams } = props
 
     const [page, setPage] = useState(0)
-    const [photos, setPhotos] = useState([])
+    const [photos, setPhotos]: [any[], any] = useState([])
     const [end, setEnd] = useState(false)
 
-    const throttle = (callback, wait) => {
-        let timeout;
-        return (...args) => {
-            if (!timeout) {
-                timeout = setTimeout(() => {
-                    callback(...args)
-                    timeout = null
-                }, wait)
-            }
-        }
-    }
-
     const observer = useRef()
-    const lastItemRef = useCallback( item => {
-        if (observer.current) {
-            observer.current.disconnect()
-        }
-        observer.current = new IntersectionObserver(throttle(entries => {
-            if (entries[0].isIntersecting) {
-                setPage(page + 1)
-            }
-        }, 500))
-        if (item) {
-            observer.current.observe(item)
-        } 
-            
-    }, [page])
+    const lastItemRef = setupObserver(observer, page, setPage)
 
     const returnSearchParameters = async (params: URLSearchParams) => {
         params.set("limit", "30")
         if (page > 0) {
             params.set("offset", (page * 30).toString())
         }
-        const response = await fetch(`${url}${params}`)
-        const data = await response.json()
+        const requestUrl = buildUrl(url, params)
+        const response = await fetch(requestUrl)
+        const data: any[] = await response.json()
         if(!data.length) setEnd(true)
         setPhotos([...photos, ...data])
     }

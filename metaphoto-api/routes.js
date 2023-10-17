@@ -1,5 +1,7 @@
-import * as https from 'https'
 import fetch from 'node-fetch'
+import openai from './utils.js'
+
+const GPT_FLAG = (process.env.ENABLE_GPT === "TRUE" ? true : false)
 
 export default async (fastify, options) => {
 
@@ -67,6 +69,23 @@ export default async (fastify, options) => {
         photoData['album'] = albumData
 
         return photoData
+    })
+
+    if (GPT_FLAG) fastify.post("/ask", async (req, res) => {
+        const { body } = req
+
+        const processed = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: [
+                { role: "system", content: "You will receive JSON documents from the user, provide summaries of no more than 3 sentences about the documents."},
+                { role: "user", content: body}
+            ],
+            temperature: .85
+        })
+
+        return {
+            response: processed.data.choices[0].text
+        }
     })
 
 }

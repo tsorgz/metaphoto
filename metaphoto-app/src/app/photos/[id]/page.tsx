@@ -1,9 +1,11 @@
 import Photo from "@/components/Photo"
+import { buildUrl } from "@/utils/buildUrl"
 
-export default async function Page({ params }) {
+export default async function Page({ params }: any) {
     const { id } = params
 
-    const response = await fetch(`http://localhost:3003/externalapi/photos/${id}`)
+    const url = buildUrl(`/photos/${id}`)
+    const response = await fetch(url)
     const data = await response.json()
     
     return (

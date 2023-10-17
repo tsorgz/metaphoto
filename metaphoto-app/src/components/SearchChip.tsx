@@ -13,7 +13,7 @@ export default function SearchChip(props: {id: string, label: string, onValid: C
     const [valid, setValid] = useState(validationState.EMPTY)
     const [text, setText] = useState('')
 
-    const confirmValidation = e => {
+    const confirmValidation = (e: any) => {
         const input = e.target.textContent
         setText(input)
         
@@ -28,8 +28,9 @@ export default function SearchChip(props: {id: string, label: string, onValid: C
         }
     }
 
-    const clearInput = e => {
+    const clearInput = (e: any) => {
         const inputElement = document.getElementById(id)
+        if(!inputElement) return
         inputElement.innerHTML = ''
         setValid(validationState.EMPTY)
         setText('')

@@ -1,14 +1,14 @@
 import PhotoGrid from "@/components/PhotoGrid"
-import { stringify } from "querystring"
 import './page.css'
+import { buildUrl } from "@/utils/buildUrl"
 
-export default async function Page({ params }) {
+export default async function Page({ params }: any) {
     const { email } = params
-    const formattedEmail = decodeURI(email)
+    const formattedEmail = email.replace('%40', '@')
 
-    const url = `http://localhost:3003/externalapi/photos?`
     const urlParams = new URLSearchParams({"album.user.email": formattedEmail, "limit": "1"})
-    const response = await fetch(url + urlParams)
+    const url = buildUrl('/photos', urlParams)
+    const response = await fetch(url)
     const data = await response.json()
 
     const firstPhotoData = data.length ? data[0] : undefined
@@ -35,7 +35,7 @@ export default async function Page({ params }) {
                 <p className="profile--phone">{phone}</p>
                 <a href={website} className='profile--website'>{website}</a>
             </div>
-            <PhotoGrid url={url} urlParams={urlParams}/>
+            <PhotoGrid url="/photos" urlParams={urlParams}/>
         </div>
     )
 }
